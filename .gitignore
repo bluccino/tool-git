@@ -1,0 +1,19 @@
+
+# virtual environment folder
+@git
+
+# consigned tools
+.pimp/bin/chk
+.pimp/bin/gib
+.pimp/bin/gic
+.pimp/bin/gid
+.pimp/bin/gih
+.pimp/bin/gil
+.pimp/bin/gip
+.pimp/bin/gis
+.pimp/bin/prq
+.pimp/bin/tag
+
+# .west and dependencies folder
+.west
+deps

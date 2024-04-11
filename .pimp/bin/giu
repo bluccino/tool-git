@@ -1,0 +1,33 @@
+#!/bin/bash
+# giu: git update submodules
+
+   if [ "$*" == "-?" ] || [ "$*" == "--help" ]; then
+      echo '   usage: giu    # git update all submodules recursively'
+      echo '          giu --version  # print version'
+      echo '   see also: chk, gic, gid, gih, gil, gip, gir, gis, giu, prq, tag'
+      exit 1
+   fi
+
+#===============================================================================
+# print version: giu --version
+#===============================================================================
+
+   if [ "$*" == "--version" ]; then
+      echo "1.0.2"; exit 0
+   fi
+
+#===============================================================================
+# giu without args
+#===============================================================================
+
+   if [ "$1" == "" ]; then
+       ec -y "git submodule update --init --recursive"
+       git submodule update --init --recursive
+       exit 1
+   fi
+
+#===============================================================================
+# coming here is an error
+#===============================================================================
+
+   giu -?

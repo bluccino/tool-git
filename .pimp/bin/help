@@ -1,0 +1,18 @@
+#!/bin/bash
+# hlp: local help
+
+  ec -g 'Tools, coming with playground @pdev (picolo development)'
+  ec -y 'Git Command Line Tools:'
+  echo      '  chk           # checkout git branch'
+  echo      '  gib           # create branch and bring changes'
+  echo      '  gic           # git stage & commit'
+  echo      '  gid           # delete a git branch'
+  echo      '  gih           # echo git home directory'
+  echo      '  gil           # log git history tree'
+  echo      '  gip           # git push'
+  echo      '  gir           # rename a git branch'
+  echo      '  gis           # git status'
+  echo      '  giu           # git update submodule'
+  echo      '  prq           # create pull request'
+  echo      '  tag           # create a git tag'
+  ec -y 'try these commands with -? or --help option to get additional help'
