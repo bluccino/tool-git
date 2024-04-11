@@ -9,3 +9,4 @@ bin/gis
 bin/giu
 bin/prq
 bin/tag
+deps/tool-ec/bin/ec
