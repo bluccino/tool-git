@@ -63,6 +63,7 @@
       ec -c "--- rename local branch: git branch -m $2"
       git branch -m $2 || exit 1
 
+      git checkout $2
       exit 0
    fi
 
