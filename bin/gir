@@ -42,25 +42,25 @@
 # print version: gir --version
 #===============================================================================
 
-   if [ "$*" == "--version" ]; then
-      echo "1.0.1"; exit 0
+   if [ "$*" == "--version" ] || [ "$*" == "--v" ]; then
+      echo "1.0.2"; exit 0
    fi
 
 #===============================================================================
 # rename local branch: gir -l <old> <new>
 #===============================================================================
 
-   if [ "$1" != "-l" ]; then
+   if [ "$1" == "-l" ]; then
       shift
       if [ "$1" == "" ] || [ "$2" == "" ] || [ "$3" != "" ]; then
          gir -?;  exit 1
       fi
 
-      echo "renaming local branch $1 to $2 ..."
-      echo "   checkout branch to rename: git checkout $1"
+      ec -g "=== renaming local branch $1 to $2 ..."
+      ec -c "--- checkout branch to rename: git checkout $1"
       git checkout $1 || exit 1
 
-      echo "   rename local branch: git branch -m $2"
+      ec -c "--- rename local branch: git branch -m $2"
       git branch -m $2 || exit 1
 
       exit 0
@@ -70,18 +70,20 @@
 # rename local upstream: gir -u <old> <new>
 #===============================================================================
 
-   if [ "$1" != "-u" ]; then
+   if [ "$1" == "-u" ]; then
       shift
       if [ "$1" == "" ] || [ "$2" == "" ] || [ "$3" != "" ]; then
          gir -?;  exit 1
       fi
 
-      echo "renaming global branch $1 to $2 ..."
-      echo "   change upstream: git push origin :$1 $2"
-      git push origin :$1 $2 || exit 1
+      ec -g "=== renaming global branch $1 to $2 ..."
+      ec -c "--- change upstream: git push origin origin/$1:refs/heads/$2 :$1"
+      #git push origin :$1 $2 || exit 1
 
-      echo "   complete upstream: git push origin -u $2"
-      git push origin -u $2 || exit
+      git push origin origin/$1:refs/heads/$2 :$1 || exit 1
+
+      #ec -c "--- complete upstream: git push origin -u $2"
+      #git push origin -u $2 || exit
 
       exit 0
    fi
