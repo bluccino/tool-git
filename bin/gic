@@ -1,9 +1,10 @@
 #!/bin/bash
 # gic: git commit (after git add all)
 
-   if [ "$*" == "-?" ] || [ "$*" == "--help" ]; then
-      echo "   usage: gic 'message'   # git commit (after git add all)"
-      echo '          gic --version   # print version'
+   if [ "$*" == "-?" ] || [ "$*" == "--help" ] || [ "$*" == "--?" ]; then
+      echo "   usage: gic 'message'     # git commit (after git add all)"
+      echo "          gic new stuff     # commit message without quotes"
+      echo '          gic --version     # print version'
       echo '   see also: chk, gic, gid, gih, gil, gip, gir, gis, giu, prq, tag'
       exit 1
    fi
@@ -12,19 +13,19 @@
 # print version: gic --version
 #===============================================================================
 
-   if [ "$*" == "--version" ]; then
-      echo "1.0.2"; exit 0
+   if [ "$*" == "--version" ] || [ "$*" == "--v" ]; then
+      echo "1.0.3"; exit 0
    fi
 
 #===============================================================================
 # standard: gic   # git commit
 #===============================================================================
 
-   if [ "$1" != "" ] && [ "$2" == "" ]; then
+   if [ "$*" != "" ]; then
       echo '=> git add -A   # staging of all changed files'
       git add -A  || exit 1
 
-      echo "=> git commit -m'"$1"'   # actual committing"
+      echo "=> git commit -m'"$*"'   # actual committing"
       git commit -m "$1" || exit 1
       exit 0
    fi
